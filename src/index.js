@@ -20,6 +20,6 @@ app.listen(3007,async()=>{
         const tweet= await tweetRepo.create({content: "tweet with commentschema"});
         console.log(tweet);
         const comment= await Comment.create({content:"New comment"});
-        const tweet1= await tweetRepo.getWithComments('65f081cd0756afb89a8c5b6c')
-        console.log(tweet1);
+        const tweet1= await tweetRepo.getAll(2,4)
+        console.log(tweet1[0].contentWithEmail);
 })
