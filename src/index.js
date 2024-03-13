@@ -16,10 +16,12 @@ app.listen(3007,async()=>{
         // const tweet= await Tweet.findById('65f0774ac14f34e237553772');
         // tweet.userEmail = 'b@c.com';
         // await tweet.save();
+        // const tweet= await tweetRepo.create({content: "tweet with commentschema"});
+        // console.log(tweet);
+        // const comment= await Comment.create({content:"New comment"});
+        // const tweet1= await tweetRepo.getAll(2,4)
+        // console.log(tweet1[0].contentWithEmail);
         const tweetRepo= new TweetRepository();
-        const tweet= await tweetRepo.create({content: "tweet with commentschema"});
+        const tweet= await tweetRepo.create({content: "With hooks"});
         console.log(tweet);
-        const comment= await Comment.create({content:"New comment"});
-        const tweet1= await tweetRepo.getAll(2,4)
-        console.log(tweet1[0].contentWithEmail);
-})
+    })
