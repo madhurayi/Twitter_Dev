@@ -1,7 +1,8 @@
-const { TweetRepository ,HashtagRepository} = require("../repository/index")
-
+import {TweetRepository,HashtagRepository} from '../repository/index.js'
 class TweetService{
     constructor(){
+        console.log(TweetRepository);
+
         this.tweetReposiitory= new TweetRepository();
         this.hashtagRepository= new HashtagRepository();
     }
@@ -20,18 +21,11 @@ class TweetService{
             tag.tweets.push(tweet.id);
             tag.save();
          });
-         return tweet;
-        //console.log(response);
-        //todo create hashtags and add here
-        /**
-         * 1. bulkcreate in mongoose
-         * 2. filter title of hashtag based on multiple tags
-         * 3. How to add tweet id inside all the hashtags
-         */
+         return tweet; 
     }
 }
 
-module.exports= TweetService
+export default TweetService
 
 /**
  * this is my first #tweet. I am really #exited
