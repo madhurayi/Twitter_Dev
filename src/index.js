@@ -2,21 +2,36 @@ import express from 'express';
 import bodyParser from 'body-parser';
 
 import {connect} from './config/database.js';
+
+import apiRoutes from './routes/index.js';
+
+import {UserRepository,TweetRepository} from './repository/index.js';
+
+import LikeService from './services/like-service.js';
+
 const app= express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}))
-import apiRoutes from './routes/index.js';
 app.use('/api',apiRoutes);
 
-import service from './services/tweet-service.js';
 
 app.listen(3007,async()=>{
-    console.log("Server started");
+        console.log("Server started");
         await connect();
         console.log("mongodb connected");    
-        let ser= new service();
-        await ser.create({
-            content: 'My other code #MADhu #Works?'
-        })
         
-    })
+        const userRepo= new UserRepository();
+        const tweetRepo= new TweetRepository();
+        const tweets = await tweetRepo.getAll(0,10);
+        // console.log(tweets);
+        //console.log(tweets[0].id);
+        // const user= await userRepo.create({
+        //     email: "madhupriya@gmail.com",
+        //     password: "madhu@340",
+        //     name: "madhu"
+        // });
+//          const users= await userRepo.getAll();
+//         const likeService= new LikeService();
+//        await likeService.toggleLike(tweets[0].id,'Tweet',users[0].id);
+        
+    }) 
