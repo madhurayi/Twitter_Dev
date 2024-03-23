@@ -23,7 +23,7 @@ class LikeService{
             console.log("hiii");
             console.log("id--",exists.id);
 
-            likeable.likes.pull(exists._id);
+            likeable.likes.pull(exists.id);
             console.log("id--",exists.id);
             await likeable.save();
             await exists.deleteOne();

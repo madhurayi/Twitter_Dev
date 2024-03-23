@@ -4,7 +4,7 @@ const commentSchema= new mongoose.Schema({
         type: String,
         required: true
     },
-    user:{
+    userId:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
@@ -18,7 +18,11 @@ const commentSchema= new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'onModel' ,
         required: true
-    }
+    },
+    comments:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Comment' 
+    }]
 },{timestamps: true});
 
 const Comment= mongoose.model('Comment',commentSchema);
